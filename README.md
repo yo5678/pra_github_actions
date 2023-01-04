@@ -98,7 +98,55 @@ on:
 https://helve-blog.com/posts/git/github-actions-python/
 
 
+python-sample.py
 
+~~~
+import datetime
+
+now = datetime.datetime.now() # 現在時刻の取得
+today = now.strftime('%Y年%m月%d日') # 現在時刻を年月曜日で表示
+
+print("github-action-sample!!")
+print(today)
+~~~
+
+run.yaml
+~~~
+name: main-name
+
+# pushしたときに以下のJobが実行される。
+on:
+  push:
+  # schedule:
+  #   - cron:  '*/10 * * * *' #10分に1回実行
+
+# jobs:
+#   job-name:
+#     # Ubuntsuの最新バージョンで動作させる。
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "this is pen"
+#       # マーケティングの指定　バージョンまで指定できると安定
+#       - uses: actions/checkout@v3
+#       - run: |
+#           ls -al
+#           cd .github/workflows/
+#           ls -al
+
+jobs:
+  python-github-action-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      - name: Get Python version
+        run: python -V
+      - name: Run Python
+        run: python python-sample.py
+~~~
 
 
 
