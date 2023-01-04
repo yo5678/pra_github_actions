@@ -3,14 +3,29 @@ name: main-name
 # pushしたときに以下のJobが実行される。
 on: [push]
 
+# jobs:
+#   job-name:
+#     # Ubuntsuの最新バージョンで動作させる。
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "this is pen"
+#       # マーケティングの指定　バージョンまで指定できると安定
+#       - uses: actions/checkout@v3
+#       - run: |
+#           ls -al
+#           cd .github/workflows/
+#           ls -al
+
 jobs:
-  job-name:
-    # Ubuntsuの最新バージョンで動作させる。
+  numpy-test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "this is pen"
       - uses: actions/checkout@v3
-      - run: |
-          ls -al
-          cd .github/workflows/
-          ls -al
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      - name: Get Python version
+        run: python -V
+      - name: Run Python
+        run: python python-sample.py
