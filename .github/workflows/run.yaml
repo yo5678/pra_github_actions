@@ -1,0 +1,11 @@
+name: main-name
+
+# pushしたときに以下のJobが実行される。
+on: [push]
+
+jobs:
+  job-name:
+    # Ubuntsuの最新バージョンで動作させる。
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "this is pen"
