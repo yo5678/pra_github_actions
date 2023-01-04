@@ -1,8 +1,10 @@
 name: main-name
 
 # pushしたときに以下のJobが実行される。
-on: [push]
-
+on:
+  push:
+  schedule:
+    - cron:  '*/10 * * * *' #10分に1回実行
 # jobs:
 #   job-name:
 #     # Ubuntsuの最新バージョンで動作させる。
@@ -17,7 +19,7 @@ on: [push]
 #           ls -al
 
 jobs:
-  numpy-test:
+  python-github-action-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
