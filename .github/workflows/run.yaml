@@ -3,8 +3,9 @@ name: main-name
 # pushしたときに以下のJobが実行される。
 on:
   push:
-  schedule:
-    - cron:  '*/10 * * * *' #10分に1回実行
+  # schedule:
+  #   - cron:  '*/10 * * * *' #10分に1回実行
+
 # jobs:
 #   job-name:
 #     # Ubuntsuの最新バージョンで動作させる。
